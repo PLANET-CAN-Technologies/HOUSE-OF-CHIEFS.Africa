@@ -5,7 +5,7 @@
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
  * SYSTEM CATEGORY: AUTH-FORTRESS
- * VERSION: GEN 11.2 V51.002.013
+ * VERSION: GEN 11.3 V01.001.001
  * =========================================================================
  */
 
@@ -94,7 +94,7 @@ function extractMetadata(filePath, ext, fileName) {
  * Orchestrates the Omni-Scan and writes the final fleet-manifest.json.
  */
 function buildManifest() {
-    console.log("[FORGE] Initiating [house-of-chiefs] Cloud Truth Omni-Scan (V51.002.013)...");
+    console.log("[FORGE] Initiating [house-of-chiefs] Cloud Truth Omni-Scan (V01.001.001)...");
     const allFiles = scanFiles(DIRECTORY_TO_SCAN);
     const manifest = [];
     
