@@ -4,11 +4,12 @@
  * FILE: auth-fortress-house-of-chiefs-drive-service-worker.js
  * MASTER BLUEPRINT TEMPLATE: OMNI-INFRASTRUCTURE GENERATOR
  * TARGET REPO: PLANETCAN-house-of-chiefs-GEN11.V6
- * VERSION: GEN 11.3 V01.001.010
+ * SYSTEM CATEGORY: AUTH-FORTRESS
+ * VERSION: GEN 11.3 V01.001.011
  * =========================================================================
  */
 
-const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V01001010';
+const CACHE_NAME = 'TITAN-house-of-chiefs-DRIVE-V01001011';
 const DYNAMIC_ASSET_VAULT = 'TITAN-DYNAMIC-house-of-chiefs-ASSETS-V51';
 let activeClearanceStage = 3;
 
@@ -16,10 +17,13 @@ const ZERO_TRUST_INFRASTRUCTURE = [
     '/',
     '/index.html',
     'https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.1.2/otpauth.umd.min.js',
-    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V01.001.010',
-    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V01.001.010',
-    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V01.001.010',
-    'https://auth.planetcan.international/vault-storage.js?v=V01.001.010',
+    'https://auth.planetcan.international/auth-fortress-global-traffic-routing.js?v=V01.001.011',
+    'https://auth.planetcan.international/firebase-cipher-pyro-sync.js?v=V01.001.011',
+    'https://auth.planetcan.international/aes256-classified-crucible-forge-cipher-pyro.js?v=V01.001.011',
+    'https://auth.planetcan.international/vault-storage.js?v=V01.001.011',
+    'https://auth.planetcan.international/haloaura-titanblackbox-autosync-wi-fi-living-badge.js?v=V01.001.011',
+    'https://auth.planetcan.international/vapourise.sos.auth.js?v=V01.001.011',
+    'https://auth.planetcan.international/auth-fortress-omni-data-sync.js?v=V01.001.011',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js',
     'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 ];
@@ -38,7 +42,6 @@ self.addEventListener('install', (event) => {
                 const response = await fetch('/fleet-manifest.json?_cb=' + Date.now());
                 const contentType = response.headers.get('content-type');
                 
-                // V01.001.010 FIX: Explicit JSON validation before unpacking
                 if (response.ok && contentType && contentType.includes('application/json')) {
                     const manifest = await response.json();
                     const foundationAssets = manifest
@@ -153,7 +156,6 @@ self.addEventListener('fetch', (event) => {
                     
                     if (!networkResponse) return networkResponse;
                     
-                    // V17.2 UNIFICATION: OPAQUE RESPONSE BYPASS FOR FIREBASE STORAGE
                     const isStandardValid = networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors');
                     const isOpaqueFirebase = isFirebaseStorage && networkResponse.type === 'opaque';
 
