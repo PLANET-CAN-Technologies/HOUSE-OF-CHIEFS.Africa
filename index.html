@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="target-file" content="index.html">
     <meta name="generation" content="GEN 11.3">
-    <meta name="version" content="V01.001.307">
+    <meta name="version" content="V01.002.010">
     <meta name="system" content="HaloAEGIS">
     <meta name="system-category" content="00-CORE-VAULT">
     <meta name="author" content="TITAN ARCHITECT">
     <meta name="description" content="We greet you with One Hand on our Heart, and the Other Outstretched. The titan-spear and shield of One-Nation Zambia.">
 
-    <title>Sovereign Nexus | HOUSE-OF-CHIEFS.AFRICA | V01.001.307</title>
+    <title>Sovereign Nexus | HOUSE-OF-CHIEFS.AFRICA | V01.002.010</title>
 
     <meta property="og:title" content="🕊️ HOUSE-OF-CHIEFS.Africa 🕊️">
     <meta property="og:description" content="We greet you with One Hand on our Heart, and the Other Outstretched. The titan-spear and shield of One-Nation Zambia.">
@@ -100,17 +100,28 @@
             box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 3rem;
-            color: #d4af37; /* Elegant Gold */
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
+        .sovereign-banner-container {
+            width: 100%;
+            max-width: 960px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .sovereign-banner {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
         .decree-container {
-            max-width: 900px;
+            width: 100%;
+            max-width: 960px;
             text-align: center;
             margin-bottom: 30px; 
             padding: 30px;
@@ -118,6 +129,7 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
         .greeting {
@@ -335,13 +347,13 @@
                 gap: 30px;
                 padding: 40px 20px;
             }
-            .lesa-medallion { width: 280px; height: 280px; border-width: 8px;}
+            .lesa-medallion { width: 280px; height: 280px; border-width: 8px; }
             .regal-titles { font-size: 1.4rem; }
             .royal-bio { font-size: 1.05rem; }
         }
         
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
+            .sovereign-banner-container { margin-bottom: 18px; }
             .matrix-grid { grid-template-columns: 1fr; }
             .card-id { font-size: 0.9rem; }
             .card-name { font-size: 0.8rem; }
@@ -368,7 +380,9 @@
     </script>
     <div class="workspace-wrapper">
         <div class="content">
-            <h1>🕊️ HOUSE-OF-CHIEFS.Africa 🕊️</h1>
+            <div class="sovereign-banner-container">
+                <img src="assets/hcca-sovereign-banner.jpg" alt="House of Chiefs Africa — Chieftainess Lesa Sovereign Crest" class="sovereign-banner">
+            </div>
             
             <div class="decree-container">
                 <div class="greeting">
@@ -402,7 +416,7 @@
         </div>
 
         <div class="footer">
-            HOUSE OF CHIEFS | PLANET-CAN GEN 11.3 V01.001.307 | PLANET-CAN Technologies
+            HOUSE OF CHIEFS | PLANET-CAN GEN 11.3 V01.002.010 | PLANET-CAN Technologies
         </div>
     </div>
 
@@ -457,12 +471,13 @@
                         const isLive = data.status === "LIVE";
                         const cardUrl = isLive ? `https://planetcan.international/identity.html?id=${data.id}` : `#`;
                         const statusClass = isLive ? "live" : "pending";
+                        const jumpHandler = isLive ? `onclick="event.preventDefault(); const dest='${cardUrl}'; if (typeof window.secureCrossDomainJump === 'function') window.secureCrossDomainJump(dest); else window.location.href = dest;"` : `onclick="event.preventDefault();"`;
                         
                         const logoElement = data.logo ? `<img src="${data.logo}" class="card-logo" alt="Vault Logo">` : `<div class="card-logo"></div>`;
                         const flagElement = data.flag ? `<img src="${data.flag}" class="card-flag" alt="${data.name} Flag">` : `<div></div>`;
                         
                         const cardHTML = `
-                            <a href="${cardUrl}" class="matrix-card ${statusClass}">
+                            <a href="${cardUrl}" ${jumpHandler} class="matrix-card ${statusClass}">
                                 <div class="card-left">
                                     ${logoElement}
                                     <span class="card-id">${data.id}</span>
