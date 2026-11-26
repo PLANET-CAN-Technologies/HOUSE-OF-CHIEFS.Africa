@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="target-file" content="index.html">
     <meta name="generation" content="GEN 11.3">
-    <meta name="version" content="V01.002.011">
+    <meta name="version" content="V01.002.012">
     <meta name="system" content="HaloAEGIS">
     <meta name="system-category" content="00-CORE-VAULT">
     <meta name="author" content="TITAN ARCHITECT">
     <meta name="description" content="We greet you with One Hand on our Heart, and the Other Outstretched. The titan-spear and shield of One-Nation Zambia.">
 
-    <title>Sovereign Nexus | HOUSE-OF-CHIEFS.AFRICA | V01.002.011</title>
+    <title>Sovereign Nexus | HOUSE-OF-CHIEFS.AFRICA | V01.002.012</title>
 
     <meta property="og:title" content="🕊️ HOUSE-OF-CHIEFS.Africa 🕊️">
     <meta property="og:description" content="We greet you with One Hand on our Heart, and the Other Outstretched. The titan-spear and shield of One-Nation Zambia.">
@@ -71,7 +71,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh; /* Locked for Mathematical Shrink */
+            height: 100vh; /* Fallback for older browsers */
+            height: 100dvh; /* Dynamic viewport lock for modern laptops & mobile screens */
             overflow: hidden; /* Prevent full body scroll, wrapper handles it */
         }
         
@@ -81,7 +82,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: calc(100vh - 185px); /* 105px top HUD + 80px bottom HUD */
+            height: calc(100vh - 185px); /* 105px top HUD + 80px bottom HUD fallback */
+            height: calc(100dvh - 185px); /* Dynamic viewport clearance */
             margin-top: 105px;
             margin-bottom: 80px;
             overflow-y: auto;
@@ -94,16 +96,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 36px clamp(16px, 4vw, 45px);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1290px; /* 1200px inner spine + up to 45px side breathing room */
             box-sizing: border-box;
         }
 
         .sovereign-banner-container {
             width: 100%;
-            max-width: 960px;
-            margin-bottom: 25px;
+            max-width: 1200px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,10 +123,10 @@
 
         .decree-container {
             width: 100%;
-            max-width: 960px;
+            max-width: 1200px;
             text-align: center;
-            margin-bottom: 30px; 
-            padding: 30px;
+            margin-bottom: 40px; 
+            padding: 35px 40px;
             background: rgba(212, 175, 55, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 10px;
@@ -147,7 +149,7 @@
             font-weight: 300;
             line-height: 1.8;
             color: #e0e0e0;
-            text-align: justify; /* Mandated block justification */
+            text-align: justify; /* Mandated block justification on desktop */
         }
 
         /* REGAL SANCTUM MODULE (Chieftainess Lesa) - DOSSIER LAYOUT */
@@ -158,7 +160,7 @@
             flex-direction: row;
             align-items: center;
             text-align: left;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
             padding: 50px 40px;
             background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.08) 0%, rgba(5, 10, 7, 0) 70%);
             border-top: 2px dashed rgba(212, 175, 55, 0.2);
@@ -222,7 +224,7 @@
             line-height: 1.8;
             color: #cccccc;
             font-weight: 300;
-            text-align: justify; /* The mandated alignment */
+            text-align: justify; /* Mandated block justification on desktop */
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             padding-top: 20px;
         }
@@ -250,6 +252,7 @@
         /* Matrix Section Headers */
         .section-header {
             width: 100%;
+            max-width: 1200px;
             text-align: left;
             color: #00ffff; /* Cyan Sanctum colour */
             font-size: 0.9rem;
@@ -259,15 +262,18 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid #00ffff;
+            box-sizing: border-box;
         }
 
         /* Sanctum-Gate Matrix Grid */
         .matrix-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 15px;
             width: 100%;
+            max-width: 1200px;
             margin-bottom: 40px;
+            box-sizing: border-box;
         }
 
         /* Individual Jurisdiction Card (Sanctum Layout) */
@@ -282,6 +288,7 @@
             text-decoration: none;
             color: #ffffff;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         .matrix-card:hover {
@@ -309,13 +316,13 @@
         .card-center {
             display: flex;
             justify-content: center;
-            width: 30%;
+            width: 25%;
         }
 
         .card-right {
             display: flex;
             justify-content: flex-end;
-            width: 35%;
+            width: 40%;
             text-align: right;
         }
 
@@ -323,6 +330,7 @@
             width: 45px;
             height: 45px;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .card-id {
@@ -337,14 +345,16 @@
             height: auto;
             border-radius: 2px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            flex-shrink: 0;
         }
 
         .card-name {
             font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             color: #d4af37;
             text-transform: uppercase;
+            line-height: 1.3;
         }
 
         .footer {
@@ -357,31 +367,60 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-top: auto;
+            box-sizing: border-box;
         }
 
-        /* Responsive adjustments */
+        /* Mainstream Laptop Scaling (13-inch to 15-inch laptops at 125%–150% DPI) */
+        @media (max-width: 1280px) {
+            .regal-sanctum-container {
+                padding: 40px 32px;
+                gap: 36px;
+            }
+            .lesa-medallion {
+                width: 310px;
+                height: 310px;
+                border-width: 10px;
+            }
+            .decree-container {
+                padding: 30px 32px;
+            }
+        }
+
+        /* Tablet & Small Screen Adjustments */
         @media (max-width: 900px) {
             .regal-sanctum-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 30px;
-                padding: 40px 20px;
+                padding: 40px 24px;
             }
             .lesa-medallion { width: 280px; height: 280px; border-width: 8px; }
             .regal-titles { font-size: 1.4rem; }
             .royal-bio { font-size: 1.05rem; }
+            .greeting { font-size: 1.35rem; }
+            .philosophy { font-size: 1.1rem; }
         }
         
+        /* Mobile Portrait Optimisation */
         @media (max-width: 600px) {
-            .sovereign-banner-container { margin-bottom: 18px; }
+            .content { padding: 24px 14px; }
+            .sovereign-banner-container { margin-bottom: 20px; }
+            .decree-container { padding: 22px 18px; margin-bottom: 28px; }
+            .greeting { font-size: 1.15rem; letter-spacing: 1px; }
+            .philosophy { font-size: 1rem; line-height: 1.65; text-align: left; }
+            .regal-sanctum-container { padding: 30px 18px; margin-bottom: 30px; }
+            .royal-bio { font-size: 1rem; line-height: 1.65; text-align: left; }
             .royal-emissaries-container { margin-bottom: 30px; }
-            .matrix-grid { grid-template-columns: 1fr; }
-            .card-id { font-size: 0.9rem; }
-            .card-name { font-size: 0.8rem; }
-            .card-left { width: 40%; }
-            .card-center { width: 20%; }
-            .card-right { width: 40%; }
-            .one-nation-zambia { font-size: 1rem; }
+            .matrix-grid { grid-template-columns: 1fr; gap: 12px; }
+            .matrix-card { padding: 12px 14px; gap: 8px; }
+            .card-logo { width: 36px; height: 36px; }
+            .card-flag { width: 38px; }
+            .card-id { font-size: 0.85rem; }
+            .card-name { font-size: 0.8rem; letter-spacing: 0.8px; }
+            .card-left { width: 36%; gap: 10px; }
+            .card-center { width: 18%; }
+            .card-right { width: 46%; }
+            .one-nation-zambia { font-size: 0.95rem; }
             .lesa-medallion { width: 220px; height: 220px; }
         }
     </style>
@@ -441,7 +480,7 @@
         </div>
 
         <div class="footer">
-            HOUSE OF CHIEFS | PLANET-CAN GEN 11.3 V01.002.011 | PLANET-CAN Technologies
+            HOUSE OF CHIEFS | PLANET-CAN GEN 11.3 V01.002.012 | PLANET-CAN Technologies
         </div>
     </div>
 
